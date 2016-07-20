@@ -1,0 +1,26 @@
+{
+  "name": "platzigram",
+  "version": "0.1.0",
+  "description": "Comparte tus fotos estudiando en platzi con el resto de la comunidad",
+  "main": "server.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jhonbeltran/MyOwnPlatzigram.git"
+  },
+  "keywords": [
+    "platzi",
+    "javascript",
+    "curso-definitivo",
+    "platzigram"
+  ],
+  "author": "Jhonbeltran <jbeltranleon@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jhonbeltran/MyOwnPlatzigram/issues"
+  },
+  "homepage": "https://github.com/Jhonbeltran/MyOwnPlatzigram#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
