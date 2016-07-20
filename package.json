@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "description": "Comparte tus fotos estudiando en platzi con el resto de la comunidad",
   "main": "server.js",
-  "scripts": {},
+  "scripts": {
+    "start": "node server.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Jhonbeltran/MyOwnPlatzigram.git"
