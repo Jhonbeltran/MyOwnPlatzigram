@@ -24,8 +24,10 @@
   "homepage": "https://github.com/Jhonbeltran/MyOwnPlatzigram#readme",
   "dependencies": {
     "express": "^4.14.0",
-    "gulp": "^3.9.1",
-    "gulp-sass": "^2.3.2",
     "materialize-css": "^0.97.6"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2"
   }
 }
