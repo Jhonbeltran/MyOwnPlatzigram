@@ -15,5 +15,13 @@ gulp.task('styles', function(){
 		.pipe(gulp.dest('public'));
 })
 
+//Vamos a autogenerar la carpeta public que borramos
+gulp.task('assets', function(){
+	gulp
+		.src('assets/*')
+		.pipe(gulp.dest('public'))
+})
+
+
 //Definimos la tarea por default
-gulp.task('default', ['styles'])
+gulp.task('default', ['styles', 'assets'])
