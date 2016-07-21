@@ -4,8 +4,11 @@ const express = require('express')//Importamos nuestro microframework para servi
 const app = express()
 const port = process.env.PORT || 8080//definimos el puerto al que va a escuchar el servidor
 
+//vamos a indicarle a express que nuestra aplicacion va a usar un motor de vistas
+app.set('view engine', 'pug')
+
 app.get('/', function (req, res) {
-	res.send('Dudeeee')
+	res.render('index')//acá se va a llamar al motor de vistas 'pug' 
 })
 
 app.listen(port, function(err){

@@ -1,0 +1,25 @@
+html
+	head
+		link (href='https://fonts.googleapis.com/css?family=Montserrat|Oleo+Script' rel='stylesheet' type='text/css')
+		link (rel='stylesheet' type='text/css' href='public/app.css')
+		meta (name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
+		meta (charset="utf-8")
+	body
+		section#main-container
+		footer.site-footer
+			.container
+				.row
+					.col.s12.l3.center-align
+						// Dropdown Trigger
+						// btn-flat es para que se vea sin el fondo de color
+						a.dropdown-button.btn.btn-flat(href='#', data-activates='dropdown1') Idioma
+						// Dropdown Structure
+						ul#dropdown1.dropdown-content
+							li
+								a(href='#!') Español
+							li
+								a(href='#!') Ingles
+					.col.s12.l3.push-l6.center-align
+						| © 2016 Platzigram
+	script(src='https://code.jquery.com/jquery-3.1.0.min.js', integrity='sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=', crossorigin='anonymous')  
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js')
