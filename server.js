@@ -7,6 +7,8 @@ const port = process.env.PORT || 8080//definimos el puerto al que va a escuchar 
 //vamos a indicarle a express que nuestra aplicacion va a usar un motor de vistas
 app.set('view engine', 'pug')
 
+app.use(express.static('public'))//Le indicamos al server que se sirva el directorio
+
 app.get('/', function (req, res) {
 	res.render('index')//acá se va a llamar al motor de vistas 'pug' 
 })
