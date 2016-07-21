@@ -25,6 +25,7 @@
   "dependencies": {
     "express": "^4.14.0",
     "materialize-css": "^0.97.6",
+    "pug": "^2.0.0-beta4",
     "rename": "^1.0.3"
   },
   "devDependencies": {
