@@ -1151,12 +1151,12 @@ const page = require('page');
 var main = document.getElementById('main-container'); //nos traemos el section del index.pug
 
 page('/', function (ctx, next) {
-	main.innerHTML = 'Home';
+	main.innerHTML = 'Home <a href="/signup">Signup</a>';
 });
 
 //Debemos crear la ruta en el server.js
 page('/signup', function (ctx, next) {
-	main.innerHTML = 'Signup';
+	main.innerHTML = 'Signup <a href="/">Home</a>';
 });
 
 page.start();
