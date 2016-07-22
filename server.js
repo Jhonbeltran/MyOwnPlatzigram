@@ -13,6 +13,14 @@ app.get('/', function (req, res) {
 	res.render('index')//acá se va a llamar al motor de vistas 'pug' 
 })
 
+app.get('/signup', function (req, res) {
+	res.render('index')//acá se va a llamar al motor de vistas 'pug' 
+})
+
+app.get('/signin', function (req, res) {
+	res.render('index')//acá se va a llamar al motor de vistas 'pug' 
+})
+
 app.listen(port, function(err){
 	//Si hubo un error muestrelo en consola y termine la ejecucion
 	if(err) return console.log("Hubo un error"),process.exit(1)
