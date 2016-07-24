@@ -28,7 +28,8 @@
     "materialize-css": "^0.97.6",
     "page": "^1.7.1",
     "pug": "^2.0.0-beta4",
-    "rename": "^1.0.3"
+    "rename": "^1.0.3",
+    "yo-yo": "^1.2.2"
   },
   "devDependencies": {
     "babelify": "^7.3.0",
