@@ -6,7 +6,7 @@ const page = require('page')
 var main = document.getElementById('main-container')//nos traemos el section del index.pug
 
 page('/', function (ctx, next) {
-	main.innerHTML =  'Home <a href="/signup">Signup</a>'
+	main.innerHTML =  'Home <a href="/signup">Registrarse</a>'
 })
 
 //Debemos crear la ruta en el server.js

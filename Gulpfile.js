@@ -5,6 +5,7 @@ const rename = require('gulp-rename')
 const babel = require('babelify')
 const browserify = require('browserify')
 const source = require('vinyl-source-stream')
+const watchify = require('watchify')
 
 //Definimos una tarea para gulp
 gulp.task('styles', function(){
@@ -25,18 +26,45 @@ gulp.task('assets', function(){
 		.pipe(gulp.dest('public'))
 })
 
-//Definimos una tarea para que gul procese el archivo index.js de src y asu poder usar ES6
-//bundle nos genera el archivo
-//source trasnforma lo que devuelve el bundle a algo que entienda gulp
-gulp.task('scripts', function(){
-	browserify('./src/index.js')
-		.transform(babel)
-		.bundle()
-		.pipe(source('index.js'))
-		.pipe(rename('app.js'))
-		.pipe(gulp.dest('public'))
+
+
+function compile(watch) {
+	//ahora wachify recibe lo de browserify
+	var bundle = watchify(browserify('./src/index.js'))
+
+	function rebundle() {
+		bundle
+			.transform(babel)
+			.bundle()
+			.pipe(source('index.js'))
+			.pipe(rename('app.js'))
+			.pipe(gulp.dest('public'))
+	}
+
+	//Esto se va a ejecutar cada vez que hallan cambios
+	if(watch){
+		bundle.on('update', function(){
+			console.log('--> Ejecutando una actualizacion *Bundling*')
+			rebundle()
+		})
+	}
+
+	rebundle()
+
+}
+
+
+//Tareas de build de nuestro proyecto
+
+//Acá no se van a escuchar los cambios en los archivos
+gulp.task('build', function() {
+	return compile()
 })
 
+//Acá si
+gulp.task('watch', function() {
+	compile(true)
+})
 
 //Definimos la tarea por default
-gulp.task('default', ['styles', 'assets', 'scripts'])
+gulp.task('default', ['styles', 'assets', 'build'])
