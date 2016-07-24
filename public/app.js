@@ -2366,22 +2366,44 @@ module.exports = [
 ]
 
 },{}],16:[function(require,module,exports){
+'use strict';
+
+const page = require('page');
+
+page('/', function (ctx, next) {
+	var main = document.getElementById('main-container');
+	main.innerHTML = '<a href="/signup">Signup</a>';
+});
+
+},{"page":11}],17:[function(require,module,exports){
 //En este archivo vamos a incluir toda la logica de js del lado del cliente
 'use strict';
 
 const page = require('page');
-const yo = require('yo-yo');
+
+require('./homepage');
+require('./signup');
+
+page.start();
+
+},{"./homepage":16,"./signup":18,"page":11}],18:[function(require,module,exports){
+'use strict';
+
+const page = require('page');
 const empty = require('empty-element');
+const template = require('./template');
 
-var main = document.getElementById('main-container'); //nos traemos el section del index.pug
-
-page('/', function (ctx, next) {
-	main.innerHTML = '<a href="/signup">Signup</a>';
+page('/signup', function (ctx, next) {
+	var main = document.getElementById('main-container');
+	empty(main).appendChild(template);
 });
 
-//Debemos crear la ruta en el server.js
-page('/signup', function (ctx, next) {
-	var el = yo`<div class="container">
+},{"./template":19,"empty-element":3,"page":11}],19:[function(require,module,exports){
+'use strict';
+
+const yo = require('yo-yo');
+
+module.exports = yo`<div class="container">
 			<div class="row">
 				
 				<div class="col s10 push-s1">
@@ -2426,9 +2448,4 @@ page('/signup', function (ctx, next) {
 			</div>
 		</div>`;
 
-	empty(main).appendChild(el);
-});
-
-page.start();
-
-},{"empty-element":3,"page":11,"yo-yo":14}]},{},[16]);
+},{"yo-yo":14}]},{},[17]);
