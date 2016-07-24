@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/Jhonbeltran/MyOwnPlatzigram#readme",
   "dependencies": {
+    "empty-element": "^1.0.0",
     "express": "^4.14.0",
     "materialize-css": "^0.97.6",
     "page": "^1.7.1",
