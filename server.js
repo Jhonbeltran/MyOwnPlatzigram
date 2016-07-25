@@ -10,15 +10,15 @@ app.set('view engine', 'pug')
 app.use(express.static('public'))//Le indicamos al server que se sirva el directorio
 
 app.get('/', function (req, res) {
-	res.render('index')//acá se va a llamar al motor de vistas 'pug' 
+	res.render('index', { title: 'Platzigram' })//acá se va a llamar al motor de vistas 'pug' 
 })
 
 app.get('/signup', function (req, res) {
-	res.render('index')//acá se va a llamar al motor de vistas 'pug' 
+	res.render('index', { title: 'Platzigram - Signup' })//acá se va a llamar al motor de vistas 'pug' 
 })
 
 app.get('/signin', function (req, res) {
-	res.render('index')//acá se va a llamar al motor de vistas 'pug' 
+	res.render('index', { title: 'Platzigram - Signin' })//acá se va a llamar al motor de vistas 'pug' 
 })
 
 app.listen(port, function(err){

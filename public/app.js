@@ -2292,6 +2292,29 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],14:[function(require,module,exports){
+
+var orig = document.title;
+
+exports = module.exports = set;
+
+function set(str) {
+  var i = 1;
+  var args = arguments;
+  document.title = str.replace(/%[os]/g, function(_){
+    switch (_) {
+      case '%o':
+        return orig;
+      case '%s':
+        return args[i++];
+    }
+  });
+}
+
+exports.reset = function(){
+  set(orig);
+};
+
+},{}],15:[function(require,module,exports){
 var bel = require('bel') // turns template tag into DOM elements
 var morphdom = require('morphdom') // efficiently diffs + morphs two DOM elements
 var defaultEvents = require('./update-events.js') // default events to be copied when dom elements update
@@ -2327,7 +2350,7 @@ module.exports.update = function (fromNode, toNode, opts) {
   }
 }
 
-},{"./update-events.js":15,"bel":1,"morphdom":9}],15:[function(require,module,exports){
+},{"./update-events.js":16,"bel":1,"morphdom":9}],16:[function(require,module,exports){
 module.exports = [
   // attribute events (can be set with attributes)
   'onclick',
@@ -2365,17 +2388,19 @@ module.exports = [
   'onfocusout'
 ]
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 'use strict';
 
 const page = require('page');
+const title = require('title');
 
 page('/', function (ctx, next) {
+	title('Platzigram');
 	var main = document.getElementById('main-container');
 	main.innerHTML = '<a href="/signup">Signup</a>';
 });
 
-},{"page":11}],17:[function(require,module,exports){
+},{"page":11,"title":14}],18:[function(require,module,exports){
 //En este archivo vamos a incluir toda la logica de js del lado del cliente
 'use strict';
 
@@ -2387,7 +2412,7 @@ require('./signin');
 
 page.start();
 
-},{"./homepage":16,"./signin":19,"./signup":21,"page":11}],18:[function(require,module,exports){
+},{"./homepage":17,"./signin":20,"./signup":22,"page":11}],19:[function(require,module,exports){
 'use strict';
 
 const yo = require('yo-yo');
@@ -2413,19 +2438,21 @@ module.exports = function landing(box) {
 		</div>`;
 };
 
-},{"yo-yo":14}],19:[function(require,module,exports){
+},{"yo-yo":15}],20:[function(require,module,exports){
 'use strict';
 
 const page = require('page');
 const empty = require('empty-element');
 const template = require('./template');
+const title = require('title');
 
 page('/signin', function (ctx, next) {
+	title('Platzigram - Signin');
 	var main = document.getElementById('main-container');
 	empty(main).appendChild(template);
 });
 
-},{"./template":20,"empty-element":3,"page":11}],20:[function(require,module,exports){
+},{"./template":21,"empty-element":3,"page":11,"title":14}],21:[function(require,module,exports){
 'use strict';
 
 const yo = require('yo-yo');
@@ -2460,19 +2487,21 @@ const signinForm = yo`<div class="col s12 m7">
 
 module.exports = landing(signinForm);
 
-},{"../landing":18,"yo-yo":14}],21:[function(require,module,exports){
+},{"../landing":19,"yo-yo":15}],22:[function(require,module,exports){
 'use strict';
 
 const page = require('page');
 const empty = require('empty-element');
 const template = require('./template');
+const title = require('title');
 
 page('/signup', function (ctx, next) {
+	title('Platzigram - Signup');
 	var main = document.getElementById('main-container');
 	empty(main).appendChild(template);
 });
 
-},{"./template":22,"empty-element":3,"page":11}],22:[function(require,module,exports){
+},{"./template":23,"empty-element":3,"page":11,"title":14}],23:[function(require,module,exports){
 'use strict';
 
 const yo = require('yo-yo');
@@ -2510,4 +2539,4 @@ const signupForm = yo`<div class="col s12 m7">
 
 module.exports = landing(signupForm);
 
-},{"../landing":18,"yo-yo":14}]},{},[17]);
+},{"../landing":19,"yo-yo":15}]},{},[18]);
