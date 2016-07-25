@@ -4,7 +4,7 @@ const yo = require('yo-yo')
 //Definiremos la estructura del celular a la izquierda y una caja a la derecha
 
 module.exports = function landing(box) {
-	return yo`<div class="container">
+	return yo`<div class="container landing">
 			<div class="row">
 				
 				<div class="col s10 push-s1">

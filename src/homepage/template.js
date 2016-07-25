@@ -1,24 +1,13 @@
 'use strict'
 const yo = require('yo-yo')
+const layout = require('../layout')
 
-const  template = yo`<nav class="header">
-	<div class="nav-wrapper">
-		<div class="container">
-			<div class="row">
-				<div class="col s12 m6 ">
-					<a href="/" class="brand-log platzigram">Platzigram</a>
-				</div>
-				<div class="col s2 m6 push-m5">
-					<a href="#" class="btn btn-large btn-flat dropdown-button" data-activates="drop-user">
-						<i class="fa fa-user" aria-hidden="true"></i>
-					</a>
-					<ul id="drop-user" class="dropdown-content">
-						<li><a href="#">Salir</a></li>
-					</ul>
-				</div>
-			</div>
+const  template = yo`<div class="container timeline">
+	<div class="row">
+		<div class="col s2 m10 offset-m1 l6 offset-l3">
+			content
 		</div>
 	</div>
-</nav>`
+</div>`
 
-module.exports = template
+module.exports = layout(template)
