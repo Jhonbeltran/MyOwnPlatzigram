@@ -6,6 +6,6 @@ const title = require('title')
 
 page('/signin', function (ctx, next) {
 	title('Platzigram - Signin')
-	var main = document.getElementById('main-container')
+	let main = document.getElementById('main-container')
 	empty(main).appendChild(template)
 })
