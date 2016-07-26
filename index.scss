@@ -105,10 +105,25 @@ $avatar-size: 48px;/*Esto es parte de sass*/
   font-size: 30px;
 }
 
-.card .fa-heart-o{
-  color: $secondary-color;
-}
+
 
 .card .username{
   color: $secondary-color;
 }
+/*Estilos para los corazones*/
+.card .fa-heart-o{
+  color: $secondary-color;
+}
+.card .fa-heart{
+  color: #f44336;
+  display: none;
+}
+
+.card.liked{
+  .fa-heart{
+    display: block;
+  }
+  .fa-heart-o{
+    display: none;
+  }
+} 
