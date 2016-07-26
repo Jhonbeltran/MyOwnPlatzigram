@@ -2431,7 +2431,7 @@ const picture = require('../picture-card');
 module.exports = function (pictures) {
 	var el = yo`<div class="container timeline">
 		<div class="row">
-			<div class="col s2 m10 offset-m1 l6 offset-l3">
+			<div class="col s12 m10 offset-m1 l6 offset-l3">
 				${ pictures.map(function (pic) {
 		return picture(pic);
 	}) }
@@ -2523,7 +2523,7 @@ module.exports = function (pic) {
       <img class="activator" src="${ pic.url }">
     </div>
     <div class="card-content">
-      	<a href="/user/${ pic.user.username }" class="card-title grey-text text-darken-4">
+      	<a href="/user/${ pic.user.username }" class="card-title">
 			<img src="${ pic.user.avatar }" class="avatar">
 			<span class="username">${ pic.user.username }</span>
 		</a>
