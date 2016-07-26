@@ -1,5 +1,6 @@
 'use strict'
 const yo = require('yo-yo')
+const moment = require('moment')
 
 module.exports = function pictureCard(pic){
 	let el;
@@ -14,7 +15,7 @@ module.exports = function pictureCard(pic){
 				<img src="${picture.user.avatar}" class="avatar">
 				<span class="username">${picture.user.username}</span>
 			</a>
-			<small class="right time">Hace 1 día</small>
+			<small class="right time">${moment(picture.createdAt).fromNow()}</small>
 			<p>
 				<a class="left" href="#" onclick=${like.bind(null, true)}>
 					<i class="fa fa-heart-o" aria-hidden="true"></i>

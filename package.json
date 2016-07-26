@@ -27,6 +27,7 @@
     "empty-element": "^1.0.0",
     "express": "^4.14.0",
     "materialize-css": "^0.97.6",
+    "moment": "^2.14.1",
     "page": "^1.7.1",
     "pug": "^2.0.0-beta4",
     "rename": "^1.0.3",
