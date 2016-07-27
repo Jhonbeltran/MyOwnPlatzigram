@@ -1,6 +1,22 @@
 'use strict'
 const yo = require('yo-yo')
-const moment = require('moment')
+
+//Esto es para cuando safari no lo soporta
+if (!window.Intl) {
+    window.Intl = require('intl') // polyfill for `Intl`
+    require('intl/locale-data/jsonp/en-US.js')
+    require('intl/locale-data/jsonp/es.js')
+}
+
+var IntlRelativeFormat = window.IntlRelativeFormat = require('intl-relativeformat')
+require('intl-relativeformat/dist/locale-data/en.js')
+require('intl-relativeformat/dist/locale-data/es.js')
+
+
+/*https://github.com/yahoo/intl-relativeformat*/
+
+var rf = new IntlRelativeFormat('es')
+// var rf = new IntlRelativeFormat('en-US')
 
 module.exports = function pictureCard(pic){
 	let el;
@@ -15,7 +31,7 @@ module.exports = function pictureCard(pic){
 				<img src="${picture.user.avatar}" class="avatar">
 				<span class="username">${picture.user.username}</span>
 			</a>
-			<small class="right time">${moment(picture.createdAt).fromNow()}</small>
+			<small class="right time">${rf.format(picture.createdAt)}</small>
 			<p>
 				<a class="left" href="#" onclick=${like.bind(null, true)}>
 					<i class="fa fa-heart-o" aria-hidden="true"></i>
