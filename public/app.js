@@ -11617,7 +11617,7 @@ const header = require('../header');
 //Lo que hace page dentro de la ruta '/' es:
 //1. Cargar las pictures desde el server
 //2. Agregar las imagenes en el DOM
-page('/', header, loadPicturesAxios, function (ctx, next) {
+page('/', header, loadPicturesFetch, function (ctx, next) {
 	title('Platzigram');
 	const main = document.getElementById('main-container');
 	empty(main).appendChild(template(ctx.pictures));
@@ -11640,6 +11640,19 @@ function loadPicturesAxios(ctx, next) {
 	//voy a usar axios (promises)
 	axios.get('/api/pictures').then(function (res) {
 		ctx.pictures = res.data;
+		next();
+	}).catch(function (err) {
+		console.log(err);
+	});
+}
+
+function loadPicturesFetch(ctx, next) {
+	//https://github.github.io/fetch/
+	fetch('/api/pictures').then(function (res) {
+		//Tomamos los datos y los convertimos en json
+		return res.json();
+	}).then(function (pictures) {
+		ctx.pictures = pictures;
 		next();
 	}).catch(function (err) {
 		console.log(err);
