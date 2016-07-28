@@ -3,33 +3,31 @@ const page = require('page')
 const empty = require('empty-element')
 const template = require('./template')
 const title = require('title')
+const request = require('superagent')
+//Para poder usar el header
+const header = require('../header')
 
-page('/', function (ctx, next) {
+//Lo que hace page dentro de la ruta '/' es:
+//1. Cargar las pictures desde el server
+//2. Agregar las imagenes en el DOM
+page('/', header, loadPictures, function (ctx, next) {
 	title('Platzigram')
 	const main = document.getElementById('main-container')
-
-	let pictures = [
-		{
-			user:{
-				username: 'Jhonbeltran',
-				avatar: 'https://scontent-mia1-1.xx.fbcdn.net/v/t1.0-9/12472594_1009674449067790_8222690340070613564_n.jpg?oh=ce6c44f315ae86ef6c299a6118da9b15&oe=58147F46'
-			},
-			url: 'http://materializecss.com/images/office.jpg',
-			likes: 0,
-			liked: false,
-			createdAt: new Date()
-		},
-		{
-			user:{
-				username: 'Jhonbeltran',
-				avatar: 'https://scontent-mia1-1.xx.fbcdn.net/v/t1.0-9/12472594_1009674449067790_8222690340070613564_n.jpg?oh=ce6c44f315ae86ef6c299a6118da9b15&oe=58147F46'
-			},
-			url: 'http://materializecss.com/images/office.jpg',
-			likes: 1,
-			liked: true,
-			createdAt: new Date().setDate(new Date().getDate()-10)
-		}
-	]
-
-	empty(main).appendChild(template(pictures))
+	empty(main).appendChild(template(ctx.pictures))
 })
+
+
+//next existe en las funciones, en page y en express(at least) 
+//para llamar una funcion luego de terminar la funcion que la llama
+function loadPictures(ctx, next) {
+	//voy a usar superagent para hacer peticiones tipo ajax
+	//Hacemos el request a nuestro servidor
+	request
+	.get('/api/pictures')
+	.end(function (err, res) {
+		if(err) return console.log(err)
+
+		ctx.pictures = res.body
+		next()
+	})
+}

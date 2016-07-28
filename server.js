@@ -21,6 +21,41 @@ app.get('/signin', function (req, res) {
 	res.render('index', { title: 'Platzigram - Signin' })//acá se va a llamar al motor de vistas 'pug' 
 })
 
+//Esta es la ruta de nuestra API
+app.get('/api/pictures', function (req, res) {
+	let pictures = [
+		{
+			user:{
+				username: 'Jhonbeltran',
+				avatar: 'https://scontent-mia1-1.xx.fbcdn.net/v/t1.0-9/12472594_1009674449067790_8222690340070613564_n.jpg?oh=ce6c44f315ae86ef6c299a6118da9b15&oe=58147F46'
+			},
+			url: 'http://materializecss.com/images/office.jpg',
+			likes: 0,
+			liked: false,
+			createdAt: new Date().getTime()
+		},
+		{
+			user:{
+				username: 'Jhonbeltran',
+				avatar: 'https://scontent-mia1-1.xx.fbcdn.net/v/t1.0-9/12472594_1009674449067790_8222690340070613564_n.jpg?oh=ce6c44f315ae86ef6c299a6118da9b15&oe=58147F46'
+			},
+			url: 'http://materializecss.com/images/office.jpg',
+			likes: 1,
+			liked: true,
+			createdAt: new Date().setDate(new Date().getDate()-10)
+		}
+	]
+
+	
+	setTimeout(function(){
+		res.send(pictures)
+	}, 2000)
+	
+})
+
+
+
+
 app.listen(port, function(err){
 	//Si hubo un error muestrelo en consola y termine la ejecucion
 	if(err) return console.log("Hubo un error"),process.exit(1)
