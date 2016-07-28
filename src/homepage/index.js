@@ -4,13 +4,14 @@ const empty = require('empty-element')
 const template = require('./template')
 const title = require('title')
 const request = require('superagent')
+const axios = require('axios')
 //Para poder usar el header
 const header = require('../header')
 
 //Lo que hace page dentro de la ruta '/' es:
 //1. Cargar las pictures desde el server
 //2. Agregar las imagenes en el DOM
-page('/', header, loadPictures, function (ctx, next) {
+page('/', header, loadPicturesAxios, function (ctx, next) {
 	title('Platzigram')
 	const main = document.getElementById('main-container')
 	empty(main).appendChild(template(ctx.pictures))
@@ -29,5 +30,18 @@ function loadPictures(ctx, next) {
 
 		ctx.pictures = res.body
 		next()
+	})
+}
+
+function loadPicturesAxios(ctx, next) {
+	//voy a usar axios (promises)
+	axios
+	.get('/api/pictures')
+	.then(function (res) {
+		ctx.pictures = res.data
+		next()
+	})
+	.catch(function (err) {
+		console.log(err)
 	})
 }
