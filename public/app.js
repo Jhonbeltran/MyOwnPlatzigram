@@ -18434,23 +18434,40 @@ function asyncLoad(ctx, next) {
 },{"../header":362,"./template":364,"axios":1,"empty-element":321,"page":350,"superagent":354,"title":358}],364:[function(require,module,exports){
 'use strict';
 
-var _templateObject = _taggedTemplateLiteral(['<div class="container timeline">\n\t\t<div class="row">\n\t\t\t<div class="col s12 m10 offset-m1 l6 offset-l3">\n\t\t\t\t', '\n\t\t\t</div>\n\t\t</div>\n\t</div>'], ['<div class="container timeline">\n\t\t<div class="row">\n\t\t\t<div class="col s12 m10 offset-m1 l6 offset-l3">\n\t\t\t\t', '\n\t\t\t</div>\n\t\t</div>\n\t</div>']);
+var _templateObject = _taggedTemplateLiteral(['<div class="container timeline">\n\t\t<div class="row">\n\t\t\t<div class="col s12 m10 offset-m1 l8 offset-l2 center-align">\n\t\t\t\t<form enctype="multipart/form-data" class="form-upload" id="form-upload" id="formUpload">\n\t\t\t\t\t<div id="fileName" class="fileUpload btn btn-flat cyan">\n\t\t\t\t\t\t<span>\n\t\t\t\t\t\t<i class="fa fa-camera" aria-hidden="true"></i>', '\n\t\t\t\t\t\t</span>\n\t\t\t\t\t\t<input name="picture" id="file" type="file" class="upload" onchange="', '" />\n\t\t\t\t\t</div>\n\t\t\t\t\t<button id="btnUpload" type="submit" class="btn btn-flat cyan hide">\n\t\t\t\t\t\t', '\n\t\t\t\t\t</button>\n\t\t\t\t\t<button id="btnCancel" type="button" class="btn btn-flat red hide">\n\t\t\t\t\t\t<i class="fa fa-times" aria-hidden="true" onchange="', '"></i>\n\t\t\t\t\t</button>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class="row">\n\t\t\t<div class="col s12 m10 offset-m1 l6 offset-l3">\n\t\t\t\t', '\n\t\t\t</div>\n\t\t</div>\n\t</div>'], ['<div class="container timeline">\n\t\t<div class="row">\n\t\t\t<div class="col s12 m10 offset-m1 l8 offset-l2 center-align">\n\t\t\t\t<form enctype="multipart/form-data" class="form-upload" id="form-upload" id="formUpload">\n\t\t\t\t\t<div id="fileName" class="fileUpload btn btn-flat cyan">\n\t\t\t\t\t\t<span>\n\t\t\t\t\t\t<i class="fa fa-camera" aria-hidden="true"></i>', '\n\t\t\t\t\t\t</span>\n\t\t\t\t\t\t<input name="picture" id="file" type="file" class="upload" onchange="', '" />\n\t\t\t\t\t</div>\n\t\t\t\t\t<button id="btnUpload" type="submit" class="btn btn-flat cyan hide">\n\t\t\t\t\t\t', '\n\t\t\t\t\t</button>\n\t\t\t\t\t<button id="btnCancel" type="button" class="btn btn-flat red hide">\n\t\t\t\t\t\t<i class="fa fa-times" aria-hidden="true" onchange="', '"></i>\n\t\t\t\t\t</button>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class="row">\n\t\t\t<div class="col s12 m10 offset-m1 l6 offset-l3">\n\t\t\t\t', '\n\t\t\t</div>\n\t\t</div>\n\t</div>']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var yo = require('yo-yo');
 var layout = require('../layout');
 var picture = require('../picture-card');
+var translate = require('../translate').message;
 
 module.exports = function (pictures) {
-	var el = yo(_templateObject, pictures.map(function (pic) {
+	var el = yo(_templateObject, translate('upload-picture'), onchange, translate('upload'), cancel, pictures.map(function (pic) {
 		return picture(pic);
 	}));
+
+	function toggleButtons() {
+		//Lo que hace toggle es que si tiene la clase hide se la quita y si no se la pone
+		document.getElementByID('fileName').classList.toggle('hide');
+		document.getElementByID('btnUpload').classList.toggle('hide');
+		document.getElementByID('btnCancel').classList.toggle('hide');
+	}
+
+	function onchange() {
+		toggleButtons();
+	}
+
+	function cancel() {
+		toggleButtons();
+		document.getElementByID('formUpload').reset();
+	}
 
 	return layout(el);
 };
 
-},{"../layout":367,"../picture-card":368,"yo-yo":359}],365:[function(require,module,exports){
+},{"../layout":367,"../picture-card":368,"../translate":375,"yo-yo":359}],365:[function(require,module,exports){
 //En este archivo vamos a incluir toda la logica de js del lado del cliente
 'use strict';
 //para que nuestro nevegador sporte el await y no de el error de
@@ -18601,7 +18618,9 @@ module.exports = {
         'signup.have-account': '¿Already have an account?',
         'signin': 'Signin',
         'signin.not-have-account': '¿Don\'t have an account',
-        'language': 'Language'
+        'language': 'Language',
+        'upload-picture': 'Upload picture',
+        'upload': 'Upload'
 };
 
 // In english is 1,000 with a ,
@@ -18625,7 +18644,9 @@ module.exports = {
     'signup.have-account': '¿Tienes una cuenta?',
     'signin': 'Entrar',
     'signin.not-have-account': '¿No tienes una cuenta',
-    'language': 'Idioma'
+    'language': 'Idioma',
+    'upload-picture': 'Subir Foto',
+    'upload': 'Subir'
 };
 
 // En español es 1.000 con un .
