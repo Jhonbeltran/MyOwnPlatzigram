@@ -29,17 +29,17 @@ app.get('/api/pictures', function (req, res) {
 				username: 'Jhonbeltran',
 				avatar: 'https://scontent-mia1-1.xx.fbcdn.net/v/t1.0-9/12472594_1009674449067790_8222690340070613564_n.jpg?oh=ce6c44f315ae86ef6c299a6118da9b15&oe=58147F46'
 			},
-			url: 'http://materializecss.com/images/office.jpg',
+			url: 'http://phandroid.s3.amazonaws.com/wp-content/uploads/2014/07/Lowpoly_Landscape.jpg',
 			likes: 0,
 			liked: false,
 			createdAt: new Date().getTime()
 		},
 		{
 			user:{
-				username: 'Jhonbeltran',
+				username: 'Jbeltranleon',
 				avatar: 'https://scontent-mia1-1.xx.fbcdn.net/v/t1.0-9/12472594_1009674449067790_8222690340070613564_n.jpg?oh=ce6c44f315ae86ef6c299a6118da9b15&oe=58147F46'
 			},
-			url: 'http://materializecss.com/images/office.jpg',
+			url: 'http://jordanbannister.co.uk/wp-content/uploads/2013/08/Poly-Landscape_2.jpg',
 			likes: 1,
 			liked: true,
 			createdAt: new Date().setDate(new Date().getDate()-10)

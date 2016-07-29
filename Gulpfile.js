@@ -29,12 +29,22 @@ gulp.task('assets', function(){
 
 
 function compile(watch) {
-	//ahora wachify recibe lo de browserify
-	var bundle = watchify(browserify('./src/index.js'))
+	
+	var bundle = browserify('./src/index.js')
+
+	//ahora watchify está atento solo del bundle
+	//Esto se va a ejecutar cada vez que hallan cambios
+	if(watch){
+		bundle = watchify(bundle)
+		bundle.on('update', function(){
+			console.log('--> Ejecutando una actualizacion *Bundling*')
+			rebundle()
+		})
+	}
 
 	function rebundle() {
 		bundle
-			.transform(babel)
+			.transform(babel, { presets: [ 'es2015' ], plugins: ['syntax-async-functions', 'transform-regenerator'] })
 			.bundle()
 			.on('error', function(err) {
 				console.log(err)
@@ -45,14 +55,7 @@ function compile(watch) {
 			.pipe(gulp.dest('public'))
 	}
 
-	//Esto se va a ejecutar cada vez que hallan cambios
-	if(watch){
-		bundle.on('update', function(){
-			console.log('--> Ejecutando una actualizacion *Bundling*')
-			rebundle()
-		})
-	}
-
+	
 	rebundle()
 
 }

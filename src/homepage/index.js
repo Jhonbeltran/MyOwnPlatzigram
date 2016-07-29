@@ -11,7 +11,7 @@ const header = require('../header')
 //Lo que hace page dentro de la ruta '/' es:
 //1. Cargar las pictures desde el server
 //2. Agregar las imagenes en el DOM
-page('/', header, loadPicturesFetch, function (ctx, next) {
+page('/', header, asyncLoad, function (ctx, next) {
 	title('Platzigram')
 	const main = document.getElementById('main-container')
 	empty(main).appendChild(template(ctx.pictures))
@@ -60,4 +60,15 @@ function loadPicturesFetch(ctx, next) {
 	.catch(function (err) {
 		console.log(err)
 	})
+}
+
+async function asyncLoad(ctx, next) {
+	try{
+		//await detiene de ejecución del proceso hasta que se cumpla la promesa
+		ctx.pictures = await fetch('/api/pictures').then(res => res.json())
+		next()
+	}
+	catch(err){
+		return console.log(err)
+	}
 }
