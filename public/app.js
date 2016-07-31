@@ -18434,7 +18434,7 @@ function asyncLoad(ctx, next) {
 },{"../header":362,"./template":364,"axios":1,"empty-element":321,"page":350,"superagent":354,"title":358}],364:[function(require,module,exports){
 'use strict';
 
-var _templateObject = _taggedTemplateLiteral(['<div class="container timeline">\n\t\t<div class="row">\n\t\t\t<div class="col s12 m10 offset-m1 l8 offset-l2 center-align">\n\t\t\t\t<form enctype="multipart/form-data" class="form-upload" id="form-upload" id="formUpload">\n\t\t\t\t\t<div id="fileName" class="fileUpload btn btn-flat cyan">\n\t\t\t\t\t\t<span>\n\t\t\t\t\t\t<i class="fa fa-camera" aria-hidden="true"></i>', '\n\t\t\t\t\t\t</span>\n\t\t\t\t\t\t<input name="picture" id="file" type="file" class="upload" onchange="', '" />\n\t\t\t\t\t</div>\n\t\t\t\t\t<button id="btnUpload" type="submit" class="btn btn-flat cyan hide">\n\t\t\t\t\t\t', '\n\t\t\t\t\t</button>\n\t\t\t\t\t<button id="btnCancel" type="button" class="btn btn-flat red hide">\n\t\t\t\t\t\t<i class="fa fa-times" aria-hidden="true" onchange="', '"></i>\n\t\t\t\t\t</button>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class="row">\n\t\t\t<div class="col s12 m10 offset-m1 l6 offset-l3">\n\t\t\t\t', '\n\t\t\t</div>\n\t\t</div>\n\t</div>'], ['<div class="container timeline">\n\t\t<div class="row">\n\t\t\t<div class="col s12 m10 offset-m1 l8 offset-l2 center-align">\n\t\t\t\t<form enctype="multipart/form-data" class="form-upload" id="form-upload" id="formUpload">\n\t\t\t\t\t<div id="fileName" class="fileUpload btn btn-flat cyan">\n\t\t\t\t\t\t<span>\n\t\t\t\t\t\t<i class="fa fa-camera" aria-hidden="true"></i>', '\n\t\t\t\t\t\t</span>\n\t\t\t\t\t\t<input name="picture" id="file" type="file" class="upload" onchange="', '" />\n\t\t\t\t\t</div>\n\t\t\t\t\t<button id="btnUpload" type="submit" class="btn btn-flat cyan hide">\n\t\t\t\t\t\t', '\n\t\t\t\t\t</button>\n\t\t\t\t\t<button id="btnCancel" type="button" class="btn btn-flat red hide">\n\t\t\t\t\t\t<i class="fa fa-times" aria-hidden="true" onchange="', '"></i>\n\t\t\t\t\t</button>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class="row">\n\t\t\t<div class="col s12 m10 offset-m1 l6 offset-l3">\n\t\t\t\t', '\n\t\t\t</div>\n\t\t</div>\n\t</div>']);
+var _templateObject = _taggedTemplateLiteral(['<div class="container timeline">\n    <div class="row">\n      <div class="col s12 m10 offset-m1 l8 offset-l2 center-align">\n        <form enctype="multipart/form-data" class="form-upload" id="formUpload" onsubmit=', '>\n          <div id="fileName" class="fileUpload btn btn-flat cyan">\n            <span><i class="fa fa-camera" aria-hidden="true"></i> ', '</span>\n            <input name="picture" id="file" type="file" class="upload" onchange=', ' />\n          </div>\n          <button id="btnUpload" type="submit" class="btn btn-flat cyan hide">', '</button>\n          <button id="btnCancel" type="button" class="btn btn-flat red hide" onclick=', '><i class="fa fa-times" aria-hidden="true"></i></button>\n        </form>\n      </div>\n    </div>\n    <div class="row">\n      <div class="col s12 m10 offset-m1 l6 offset-l3">\n        ', '\n      </div>\n    </div>\n  </div>'], ['<div class="container timeline">\n    <div class="row">\n      <div class="col s12 m10 offset-m1 l8 offset-l2 center-align">\n        <form enctype="multipart/form-data" class="form-upload" id="formUpload" onsubmit=', '>\n          <div id="fileName" class="fileUpload btn btn-flat cyan">\n            <span><i class="fa fa-camera" aria-hidden="true"></i> ', '</span>\n            <input name="picture" id="file" type="file" class="upload" onchange=', ' />\n          </div>\n          <button id="btnUpload" type="submit" class="btn btn-flat cyan hide">', '</button>\n          <button id="btnCancel" type="button" class="btn btn-flat red hide" onclick=', '><i class="fa fa-times" aria-hidden="true"></i></button>\n        </form>\n      </div>\n    </div>\n    <div class="row">\n      <div class="col s12 m10 offset-m1 l6 offset-l3">\n        ', '\n      </div>\n    </div>\n  </div>']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -18442,32 +18442,41 @@ var yo = require('yo-yo');
 var layout = require('../layout');
 var picture = require('../picture-card');
 var translate = require('../translate').message;
+var request = require('superagent');
 
 module.exports = function (pictures) {
-	var el = yo(_templateObject, translate('upload-picture'), onchange, translate('upload'), cancel, pictures.map(function (pic) {
-		return picture(pic);
-	}));
+  var el = yo(_templateObject, onsubmit, translate('upload-picture'), onchange, translate('upload'), cancel, pictures.map(function (pic) {
+    return picture(pic);
+  }));
 
-	function toggleButtons() {
-		//Lo que hace toggle es que si tiene la clase hide se la quita y si no se la pone
-		document.getElementByID('fileName').classList.toggle('hide');
-		document.getElementByID('btnUpload').classList.toggle('hide');
-		document.getElementByID('btnCancel').classList.toggle('hide');
-	}
+  function toggleButtons() {
+    document.getElementById('fileName').classList.toggle('hide');
+    document.getElementById('btnUpload').classList.toggle('hide');
+    document.getElementById('btnCancel').classList.toggle('hide');
+  }
 
-	function onchange() {
-		toggleButtons();
-	}
+  function cancel() {
+    toggleButtons();
+    document.getElementById('formUpload').reset();
+  }
 
-	function cancel() {
-		toggleButtons();
-		document.getElementByID('formUpload').reset();
-	}
+  function onchange() {
+    toggleButtons();
+  }
 
-	return layout(el);
+  function onsubmit(ev) {
+    ev.preventDefault();
+
+    var data = new FormData(this);
+    request.post('/api/pictures').send(data).end(function (err, res) {
+      console.log(arguments);
+    });
+  }
+
+  return layout(el);
 };
 
-},{"../layout":367,"../picture-card":368,"../translate":375,"yo-yo":359}],365:[function(require,module,exports){
+},{"../layout":367,"../picture-card":368,"../translate":375,"superagent":354,"yo-yo":359}],365:[function(require,module,exports){
 //En este archivo vamos a incluir toda la logica de js del lado del cliente
 'use strict';
 //para que nuestro nevegador sporte el await y no de el error de

@@ -3,6 +3,19 @@
 const express = require('express')//Importamos nuestro microframework para servidores web
 const app = express()
 const port = process.env.PORT || 8080//definimos el puerto al que va a escuchar el servidor
+const ext = require('file-extension')
+const multer  = require('multer')
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '.' +ext(file.originalname))
+  }
+})
+ 
+const upload = multer({ storage: storage }).single('picture')
+
 
 //vamos a indicarle a express que nuestra aplicacion va a usar un motor de vistas
 app.set('view engine', 'pug')
@@ -53,7 +66,13 @@ app.get('/api/pictures', function (req, res) {
 	
 })
 
+app.post('/api/pictures', function (req, res) {
+	upload(req, res, function(err) {
+		if (err) {return res.send(500, "Error Uploading file")}
 
+		res.send('File uploaded')
+	})
+})
 
 
 app.listen(port, function(err){
