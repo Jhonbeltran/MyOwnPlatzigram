@@ -18488,11 +18488,12 @@ var page = require('page');
 require('./homepage');
 require('./signup');
 require('./signin');
+require('./user-page');
 require('./footer');
 
 page.start();
 
-},{"./footer":361,"./homepage":363,"./signin":369,"./signup":371,"babel-polyfill":23,"page":350}],366:[function(require,module,exports){
+},{"./footer":361,"./homepage":363,"./signin":369,"./signup":371,"./user-page":376,"babel-polyfill":23,"page":350}],366:[function(require,module,exports){
 'use strict';
 
 var _templateObject = _taggedTemplateLiteral(['<div class="container landing">\n\t\t\t<div class="row">\n\t\t\t\t\n\t\t\t\t<div class="col s10 push-s1">\n\t\t\t\t\t\n\t\t\t\t\t<div class="row">\n\t\t\t\t\t\t\n\t\t\t\t\t\t<div class="col m5 hide-on-small-only">\n\t\t\t\t\t\t\t<img class="iphone" src="iphone.png"/>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\n\t\t\t\t\t\t', '\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>'], ['<div class="container landing">\n\t\t\t<div class="row">\n\t\t\t\t\n\t\t\t\t<div class="col s10 push-s1">\n\t\t\t\t\t\n\t\t\t\t\t<div class="row">\n\t\t\t\t\t\t\n\t\t\t\t\t\t<div class="col m5 hide-on-small-only">\n\t\t\t\t\t\t\t<img class="iphone" src="iphone.png"/>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\n\t\t\t\t\t\t', '\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>']);
@@ -18524,7 +18525,7 @@ module.exports = function layout(content) {
 },{"../translate":375,"yo-yo":359}],368:[function(require,module,exports){
 'use strict';
 
-var _templateObject = _taggedTemplateLiteral(['<div class="card ', '">\n\t    <div class="card-image">\n\t      <img class="activator" src="', '">\n\t    </div>\n\t    <div class="card-content">\n\t      \t<a href="/user/', '" class="card-title">\n\t\t\t\t<img src="', '" class="avatar">\n\t\t\t\t<span class="username">', '</span>\n\t\t\t</a>\n\t\t\t<small class="right time">', '</small>\n\t\t\t<p>\n\t\t\t\t<a class="left" href="#" onclick=', '>\n\t\t\t\t\t<i class="fa fa-heart-o" aria-hidden="true"></i>\n\t\t\t\t</a>\n\t\t\t\t<a class="left" href="#" onclick=', '>\n\t\t\t\t\t<i class="fa fa-heart" aria-hidden="true"></i>\n\t\t\t\t</a>\n\t\t\t\t<span class="left likes">', '</span>\n\t\t\t</p>\n\t    </div>\n\t  </div>'], ['<div class="card ', '">\n\t    <div class="card-image">\n\t      <img class="activator" src="', '">\n\t    </div>\n\t    <div class="card-content">\n\t      \t<a href="/user/', '" class="card-title">\n\t\t\t\t<img src="', '" class="avatar">\n\t\t\t\t<span class="username">', '</span>\n\t\t\t</a>\n\t\t\t<small class="right time">', '</small>\n\t\t\t<p>\n\t\t\t\t<a class="left" href="#" onclick=', '>\n\t\t\t\t\t<i class="fa fa-heart-o" aria-hidden="true"></i>\n\t\t\t\t</a>\n\t\t\t\t<a class="left" href="#" onclick=', '>\n\t\t\t\t\t<i class="fa fa-heart" aria-hidden="true"></i>\n\t\t\t\t</a>\n\t\t\t\t<span class="left likes">', '</span>\n\t\t\t</p>\n\t    </div>\n\t  </div>']);
+var _templateObject = _taggedTemplateLiteral(['<div class="card ', '">\n\t    <div class="card-image">\n\t      <img class="activator" src="', '">\n\t    </div>\n\t    <div class="card-content">\n\t      \t<a href="/', '" class="card-title">\n\t\t\t\t<img src="', '" class="avatar">\n\t\t\t\t<span class="username">', '</span>\n\t\t\t</a>\n\t\t\t<small class="right time">', '</small>\n\t\t\t<p>\n\t\t\t\t<a class="left" href="#" onclick=', '>\n\t\t\t\t\t<i class="fa fa-heart-o" aria-hidden="true"></i>\n\t\t\t\t</a>\n\t\t\t\t<a class="left" href="#" onclick=', '>\n\t\t\t\t\t<i class="fa fa-heart" aria-hidden="true"></i>\n\t\t\t\t</a>\n\t\t\t\t<span class="left likes">', '</span>\n\t\t\t</p>\n\t    </div>\n\t  </div>'], ['<div class="card ', '">\n\t    <div class="card-image">\n\t      <img class="activator" src="', '">\n\t    </div>\n\t    <div class="card-content">\n\t      \t<a href="/', '" class="card-title">\n\t\t\t\t<img src="', '" class="avatar">\n\t\t\t\t<span class="username">', '</span>\n\t\t\t</a>\n\t\t\t<small class="right time">', '</small>\n\t\t\t<p>\n\t\t\t\t<a class="left" href="#" onclick=', '>\n\t\t\t\t\t<i class="fa fa-heart-o" aria-hidden="true"></i>\n\t\t\t\t</a>\n\t\t\t\t<a class="left" href="#" onclick=', '>\n\t\t\t\t\t<i class="fa fa-heart" aria-hidden="true"></i>\n\t\t\t\t</a>\n\t\t\t\t<span class="left likes">', '</span>\n\t\t\t</p>\n\t    </div>\n\t  </div>']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -18698,4 +18699,74 @@ module.exports = {
 	date: new IntlRelativeFormat(locale)
 };
 
-},{"./en-US":373,"./es":374,"intl":343,"intl-messageformat":328,"intl-relativeformat":337,"intl-relativeformat/dist/locale-data/en.js":335,"intl-relativeformat/dist/locale-data/es.js":336,"intl/locale-data/jsonp/en-US.js":345,"intl/locale-data/jsonp/es.js":346}]},{},[365]);
+},{"./en-US":373,"./es":374,"intl":343,"intl-messageformat":328,"intl-relativeformat":337,"intl-relativeformat/dist/locale-data/en.js":335,"intl-relativeformat/dist/locale-data/es.js":336,"intl/locale-data/jsonp/en-US.js":345,"intl/locale-data/jsonp/es.js":346}],376:[function(require,module,exports){
+//definimos la ruta
+'use strict';
+
+var _page = require('page');
+
+var _page2 = _interopRequireDefault(_page);
+
+var _header = require('../header');
+
+var _header2 = _interopRequireDefault(_header);
+
+var _title = require('title');
+
+var _title2 = _interopRequireDefault(_title);
+
+var _emptyElement = require('empty-element');
+
+var _emptyElement2 = _interopRequireDefault(_emptyElement);
+
+var _template = require('./template');
+
+var _template2 = _interopRequireDefault(_template);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//Para poner parametros en page usamos ":"
+/*los middlewares son funciones que se ejecutan una despues de la otra
+En este se separa una de otra con comas, al final de cada una se llama
+el parametro next si todo fue bien*/
+(0, _page2.default)('/:username', _header2.default, function (ctx, next) {
+	var main = document.getElementById('main-container');
+	(0, _title2.default)('Platzigram - ' + ctx.params.username);
+	(0, _emptyElement2.default)(main).appendChild((0, _template2.default)(ctx.params.username));
+});
+
+},{"../header":362,"./template":377,"empty-element":321,"page":350,"title":358}],377:[function(require,module,exports){
+//definimos la vista
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['<div class="container userpage">\n\t\t<div class="row">\n\t\t\t<div class="col s12 m10 offset-m1 l8 offset-l2 center-align heading">\n\t\t\t\t<div class="row">\n\t\t\t\t\t<div class="col s12 m10 offset-m1 l3 offset-l3 center">\n\t\t\t\t\t\t<img src="https://pbs.twimg.com/profile_images/762748755087089666/3ubjcOs4.jpg" class="responsive-omg cicle">\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="col s12 m10 offset-m1 l6 left-align">\n\t\t\t\t\t\t<h2 class="hide-on-large-only center-align">\n\t\t\t\t\t\t\t', '\t\n\t\t\t\t\t\t</h2>\n\t\t\t\t\t\t<h2 class="hide-on-med-and-down left-align">\n\t\t\t\t\t\t\t', '\n\t\t\t\t\t\t</h2>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\t\n\t\t</div>\n\t</div>'], ['<div class="container userpage">\n\t\t<div class="row">\n\t\t\t<div class="col s12 m10 offset-m1 l8 offset-l2 center-align heading">\n\t\t\t\t<div class="row">\n\t\t\t\t\t<div class="col s12 m10 offset-m1 l3 offset-l3 center">\n\t\t\t\t\t\t<img src="https://pbs.twimg.com/profile_images/762748755087089666/3ubjcOs4.jpg" class="responsive-omg cicle">\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="col s12 m10 offset-m1 l6 left-align">\n\t\t\t\t\t\t<h2 class="hide-on-large-only center-align">\n\t\t\t\t\t\t\t', '\t\n\t\t\t\t\t\t</h2>\n\t\t\t\t\t\t<h2 class="hide-on-med-and-down left-align">\n\t\t\t\t\t\t\t', '\n\t\t\t\t\t\t</h2>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\t\n\t\t</div>\n\t</div>']);
+
+exports.default = userPageTemplate;
+
+var _yoYo = require('yo-yo');
+
+var _yoYo2 = _interopRequireDefault(_yoYo);
+
+var _layout = require('../layout');
+
+var _layout2 = _interopRequireDefault(_layout);
+
+var _translate = require('../translate');
+
+var _translate2 = _interopRequireDefault(_translate);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function userPageTemplate(username) {
+	var el = (0, _yoYo2.default)(_templateObject, username, username);
+
+	return (0, _layout2.default)(el);
+}
+
+},{"../layout":367,"../translate":375,"yo-yo":359}]},{},[365]);
