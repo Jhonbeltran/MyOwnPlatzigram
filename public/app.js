@@ -18729,11 +18729,45 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /*los middlewares son funciones que se ejecutan una despues de la otra
 En este se separa una de otra con comas, al final de cada una se llama
 el parametro next si todo fue bien*/
-(0, _page2.default)('/:username', _header2.default, function (ctx, next) {
+(0, _page2.default)('/:username', _header2.default, loadUser, function (ctx, next) {
 	var main = document.getElementById('main-container');
 	(0, _title2.default)('Platzigram - ' + ctx.params.username);
-	(0, _emptyElement2.default)(main).appendChild((0, _template2.default)(ctx.params.username));
+	(0, _emptyElement2.default)(main).appendChild((0, _template2.default)(ctx.user));
 });
+
+//Esto de ES2016, lo implementamos con babel
+function loadUser(ctx, next) {
+	return regeneratorRuntime.async(function loadUser$(_context) {
+		while (1) {
+			switch (_context.prev = _context.next) {
+				case 0:
+					_context.prev = 0;
+					_context.next = 3;
+					return regeneratorRuntime.awrap(fetch('api/user/' + ctx.params.username).then(function (res) {
+						return res.json();
+					}));
+
+				case 3:
+					ctx.user = _context.sent;
+
+
+					next();
+					_context.next = 10;
+					break;
+
+				case 7:
+					_context.prev = 7;
+					_context.t0 = _context['catch'](0);
+
+					console.log(_context.t0);
+
+				case 10:
+				case 'end':
+					return _context.stop();
+			}
+		}
+	}, null, this, [[0, 7]]);
+}
 
 },{"../header":362,"./template":377,"empty-element":321,"page":350,"title":358}],377:[function(require,module,exports){
 //definimos la vista
@@ -18743,7 +18777,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['<div class="container userpage">\n\t\t<div class="row">\n\t\t\t<div class="col s12 m10 offset-m1 l8 offset-l2 center-align heading">\n\t\t\t\t<div class="row">\n\t\t\t\t\t<div class="col s12 m10 offset-m1 l3 offset-l3 center">\n\t\t\t\t\t\t<img src="https://pbs.twimg.com/profile_images/762748755087089666/3ubjcOs4.jpg" class="responsive-omg cicle">\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="col s12 m10 offset-m1 l6 left-align">\n\t\t\t\t\t\t<h2 class="hide-on-large-only center-align">\n\t\t\t\t\t\t\t', '\t\n\t\t\t\t\t\t</h2>\n\t\t\t\t\t\t<h2 class="hide-on-med-and-down left-align">\n\t\t\t\t\t\t\t', '\n\t\t\t\t\t\t</h2>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\t\n\t\t</div>\n\t</div>'], ['<div class="container userpage">\n\t\t<div class="row">\n\t\t\t<div class="col s12 m10 offset-m1 l8 offset-l2 center-align heading">\n\t\t\t\t<div class="row">\n\t\t\t\t\t<div class="col s12 m10 offset-m1 l3 offset-l3 center">\n\t\t\t\t\t\t<img src="https://pbs.twimg.com/profile_images/762748755087089666/3ubjcOs4.jpg" class="responsive-omg cicle">\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="col s12 m10 offset-m1 l6 left-align">\n\t\t\t\t\t\t<h2 class="hide-on-large-only center-align">\n\t\t\t\t\t\t\t', '\t\n\t\t\t\t\t\t</h2>\n\t\t\t\t\t\t<h2 class="hide-on-med-and-down left-align">\n\t\t\t\t\t\t\t', '\n\t\t\t\t\t\t</h2>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\t\n\t\t</div>\n\t</div>']);
+var _templateObject = _taggedTemplateLiteral(['<div class="container user-page">\n\t\t<div class="row">\n\t\t\t<div class="col s12 m10 offset-m1 l8 offset-l2 center-align heading">\n\t\t\t\t<div class="row">\n\t\t\t\t\t<div class="col s12 m10 offset-m1 l3 offset-l3 center">\n\t\t\t\t\t\t<img src="', '" class="responsive-img circle">\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="col s12 m10 offset-m1 l6 left-align">\n\t\t\t\t\t\t<h2 class="hide-on-large-only center-align">\n\t\t\t\t\t\t\t', '\t\n\t\t\t\t\t\t</h2>\n\t\t\t\t\t\t<h2 class="hide-on-med-and-down left-align">\n\t\t\t\t\t\t\t', '\n\t\t\t\t\t\t</h2>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class="row">\n\t\t\t\t', '\n\t\t\t</div>\t\n\t\t</div>\n\t</div>'], ['<div class="container user-page">\n\t\t<div class="row">\n\t\t\t<div class="col s12 m10 offset-m1 l8 offset-l2 center-align heading">\n\t\t\t\t<div class="row">\n\t\t\t\t\t<div class="col s12 m10 offset-m1 l3 offset-l3 center">\n\t\t\t\t\t\t<img src="', '" class="responsive-img circle">\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="col s12 m10 offset-m1 l6 left-align">\n\t\t\t\t\t\t<h2 class="hide-on-large-only center-align">\n\t\t\t\t\t\t\t', '\t\n\t\t\t\t\t\t</h2>\n\t\t\t\t\t\t<h2 class="hide-on-med-and-down left-align">\n\t\t\t\t\t\t\t', '\n\t\t\t\t\t\t</h2>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class="row">\n\t\t\t\t', '\n\t\t\t</div>\t\n\t\t</div>\n\t</div>']),
+    _templateObject2 = _taggedTemplateLiteral(['<div class="col s12 m6 l4">\n\t\t\t\t\t\t<div class="picture-container">\n\t\t\t\t\t\t\t<img src="', '" class="picture">\n\t\t\t\t\t\t\t<div class="likes">\n\t\t\t\t\t\t\t\t<i class="fa fa-heartbeat">', '</i>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>'], ['<div class="col s12 m6 l4">\n\t\t\t\t\t\t<div class="picture-container">\n\t\t\t\t\t\t\t<img src="', '" class="picture">\n\t\t\t\t\t\t\t<div class="likes">\n\t\t\t\t\t\t\t\t<i class="fa fa-heartbeat">', '</i>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>']);
 
 exports.default = userPageTemplate;
 
@@ -18763,8 +18798,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-function userPageTemplate(username) {
-	var el = (0, _yoYo2.default)(_templateObject, username, username);
+function userPageTemplate(user) {
+	var el = (0, _yoYo2.default)(_templateObject, user.avatar, user.username, user.username, user.pictures.map(function (picture) {
+		return (0, _yoYo2.default)(_templateObject2, picture.src, picture.likes);
+	}));
 
 	return (0, _layout2.default)(el);
 }

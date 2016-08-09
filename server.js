@@ -43,7 +43,7 @@ app.get('/api/pictures', function (req, res) {
 				avatar: 'https://scontent-mia1-1.xx.fbcdn.net/v/t1.0-9/12472594_1009674449067790_8222690340070613564_n.jpg?oh=ce6c44f315ae86ef6c299a6118da9b15&oe=58147F46'
 			},
 			url: 'http://phandroid.s3.amazonaws.com/wp-content/uploads/2014/07/Lowpoly_Landscape.jpg',
-			likes: 0,
+			likes: 1,
 			liked: false,
 			createdAt: new Date().getTime()
 		},
@@ -72,6 +72,53 @@ app.post('/api/pictures', function (req, res) {
 
 		res.send('File uploaded')
 	})
+})
+
+//Definimos la ruta de las imagenes(por ahora son estaticas)
+app.get('/api/user/:username', (req, res) => {
+  const user = {
+    username: 'Jhonbeltran',
+    avatar: 'https://pbs.twimg.com/profile_images/762748755087089666/3ubjcOs4.jpg',
+    pictures: [
+      {
+        id: 1,
+        src: 'https://igcdn-photos-e-a.akamaihd.net/hphotos-ak-xaf1/t51.2885-15/s640x640/sh0.08/e35/c135.0.810.810/13129218_1692859530968044_751360067_n.jpg?ig_cache_key=MTI0MjIzMTY4MzQ5NzU1MTQxOQ%3D%3D.2.c',
+        likes: 3
+      },
+      {
+        id: 2,
+        src: 'https://igcdn-photos-d-a.akamaihd.net/hphotos-ak-xaf1/t51.2885-15/e35/13126768_259576907723683_861119732_n.jpg?ig_cache_key=MTIzODYzMjE4NDk1NDk3MTY5OQ%3D%3D.2',
+        likes: 1
+      },
+      {
+        id: 3,
+        src: 'https://igcdn-photos-d-a.akamaihd.net/hphotos-ak-xfa1/t51.2885-15/s640x640/sh0.08/e35/13118139_1705318183067891_1113349381_n.jpg?ig_cache_key=MTI0MTQwNzk1ODEyODc0ODQ5MQ%3D%3D.2',
+        likes: 10
+      },
+      {
+        id: 4,
+        src: 'https://igcdn-photos-g-a.akamaihd.net/hphotos-ak-xaf1/t51.2885-15/e35/12940327_1784772678421526_1500743370_n.jpg?ig_cache_key=MTIyMzQxODEwNTQ4MzE5MjE4OQ%3D%3D.2',
+        likes: 0
+      },
+      {
+        id: 5,
+        src: 'https://igcdn-photos-a-a.akamaihd.net/hphotos-ak-xpt1/t51.2885-15/e35/11934723_222119064823256_2005955609_n.jpg?ig_cache_key=MTIyMzQwOTg2OTkwODU2NzY1MA%3D%3D.2',
+        likes: 23
+      },
+      {
+        id: 6,
+        src: 'https://igcdn-photos-a-a.akamaihd.net/hphotos-ak-xaf1/t51.2885-15/e35/12904985_475045592684864_301128546_n.jpg?ig_cache_key=MTIyMzQwNjg2NDA5NDE2MDM5NA%3D%3D.2',
+        likes: 11
+      }
+    ]
+  }
+
+  res.send(user);
+})
+
+//la ruta de usuario como recibe un parametro debemos definirla al final
+app.get('/:username', function (req, res){
+	res.render('index', { title: `Platzigram - ${req.params.username}` })
 })
 
 

@@ -6208,6 +6208,9 @@ body {
   color: #125688;
   font-family: Montserrat; }
 
+.landing {
+  margin: 30px auto; }
+
 .iphone {
   max-width: 100%; }
 
@@ -6218,10 +6221,8 @@ body {
 .login-box,
 .signup-box {
   background-color: white;
-  /*para encerrar el contenedor*/
   border: 1px solid #edeeee;
   border-radius: 3px;
-  /*Para que el contenido tenga un poco de espaciado, respecto a los bordes*/
   padding: 10px 0;
   text-align: center; }
 
@@ -6232,10 +6233,8 @@ body {
 
 .signup-form {
   width: 65%;
-  /*Para que se centre*/
   margin: 0 auto; }
 
-/*Subtitulo*/
 .signup-form h2 {
   color: #a5a7aa;
   font-size: 1.2em; }
@@ -6259,18 +6258,15 @@ body {
 .timeline {
   padding: 30px 0; }
 
-.landing {
-  /*para que tenga margen arriba y abajo 30px y se centre a los costados*/
-  margin: 30px auto; }
-
-/*Estilos para las picture-cards*/
-/*Esto es parte de sass*/
 .avatar {
   width: 48px;
   height: 48px;
   border-radius: 50%;
   float: left;
   margin-right: 12px; }
+
+.card .username {
+  color: #125688; }
 
 .card small.time {
   line-height: 48px; }
@@ -6285,10 +6281,6 @@ body {
 .card i {
   font-size: 30px; }
 
-.card .username {
-  color: #125688; }
-
-/*Estilos para los corazones*/
 .card .fa-heart-o {
   color: #125688; }
 
@@ -6302,7 +6294,6 @@ body {
 .card.liked .fa-heart-o {
   display: none; }
 
-/*Estilos para la subida de imagenes*/
 .form-upload span, .form-upload button {
   color: white; }
 
@@ -6321,3 +6312,44 @@ body {
     cursor: pointer;
     opacity: 0;
     filter: alpha(opacity=0); }
+
+.user-page {
+  margin-top: 30px; }
+  .user-page .heading {
+    margin-bottom: 20px; }
+  .user-page .picture-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    margin-bottom: 20px;
+    position: relative; }
+    .user-page .picture-container:hover .picture {
+      -webkit-filter: blur(5px) grayscale(100%);
+      -moz-filter: blur(5px) grayscale(100%);
+      -ms-filter: blur(5px) grayscale(100%);
+      -o-filter: blur(5px) grayscale(100%);
+      filter: blur(5px) grayscale(100%); }
+    .user-page .picture-container:hover .likes {
+      display: flex; }
+    .user-page .picture-container .picture {
+      margin-bottom: 20px;
+      display: block;
+      max-width: 100%;
+      max-height: 100%; }
+    .user-page .picture-container .likes {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      color: #f44336;
+      font-size: 34px;
+      display: none; }
+    .user-page .picture-container .fa-heartbeat {
+      margin-right: 8px;
+      display: inline-block; }
