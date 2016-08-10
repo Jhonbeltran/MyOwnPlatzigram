@@ -60,8 +60,8 @@ app.get('/api/pictures', function (req, res) {
 	]
 
 	
-	
-		res.send(pictures)
+	setTimeout(() => res.send(pictures), 2000)
+		
 	
 	
 })

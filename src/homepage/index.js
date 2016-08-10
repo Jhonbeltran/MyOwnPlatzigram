@@ -11,11 +11,18 @@ const header = require('../header')
 //Lo que hace page dentro de la ruta '/' es:
 //1. Cargar las pictures desde el server
 //2. Agregar las imagenes en el DOM
-page('/', header, asyncLoad, function (ctx, next) {
+page('/', header, loading, asyncLoad, function (ctx, next) {
 	title('Platzigram')
 	const main = document.getElementById('main-container')
 	empty(main).appendChild(template(ctx.pictures))
 })
+
+function loading(ctx, next) {
+	const el = document.createElement('div')
+	el.classList.add('loader')
+	document.getElementById('main-container').appendChild(el)
+	next()
+}
 
 
 //next existe en las funciones, en page y en express(at least) 
