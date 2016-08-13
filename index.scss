@@ -214,3 +214,33 @@ $avatar-size-big: 150px;
   }
 }
 
+.modal{
+  img{
+    width: 100%;
+    height: auto;
+  }
+  .fa-heart{
+    color: #f44336
+  }
+
+}
+
+.like-heart{
+  font-size: 10em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /*para centrarlo sobre la foto*/
+  transform: translate(-50%, -50%);
+  color: white;
+  transition: all .1s ease;
+  opacity: 0;
+
+  &.likedMostrarCorazon{
+    color:$platzigram-red;
+    font-size: 12em;
+    display: block;
+    transition: all .2s ease;
+    opacity: 1;
+  }
+}

@@ -14,15 +14,27 @@ page('/:username', header, loadUser, function (ctx, next) {
 	const main = document.getElementById('main-container')
 	title(`Platzigram - ${ctx.params.username}`)
 	empty(main).appendChild(template(ctx.user))
+	$('.modal-trigger').leanModal();
 })
+
+
+page('/:username/:id', loadUser, header, function (ctx, next) {
+  const main = document.getElementById('main-container')
+  title(`Platzigram - ${ctx.user.username}`)
+  empty(main).appendChild(template(ctx.user))
+  $(`#modal${ctx.params.id}`).openModal({
+  	complete: function(){
+  		page(`/${ctx.params.username}`)
+  	}
+  })
+})
+
 
 //Esto de ES2016, lo implementamos con babel
 async function loadUser(ctx, next){
 	//usamos promesas
 	try{
-		ctx.user = await fetch(`api/user/${ctx.params.username}`)
-		.then(res => res.json())
-
+		ctx.user = await fetch(`/api/user/${ctx.params.username}`).then(res => res.json())
 		next()
 	}catch(err){
 		console.log(err)

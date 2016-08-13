@@ -6256,6 +6256,14 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   40% {
     box-shadow: 0 2.5em 0 0; } }
 
+.like-heart {
+  font-size: 10em;
+  position: absolute;
+  top: 50% left 50%;
+  /*para centrarlo sobre la foto*/
+  transform: translate(-50%, -50%);
+  color: white; }
+
 body {
   background: #fafafa;
   color: #125688;
@@ -6406,3 +6414,27 @@ body {
     .user-page .picture-container .fa-heartbeat {
       margin-right: 8px;
       display: inline-block; }
+
+.modal img {
+  width: 100%;
+  height: auto; }
+
+.modal .fa-heart {
+  color: #f44336; }
+
+.like-heart {
+  font-size: 10em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /*para centrarlo sobre la foto*/
+  transform: translate(-50%, -50%);
+  color: white;
+  transition: all .1s ease;
+  opacity: 0; }
+  .like-heart.likedMostrarCorazon {
+    color: #f44336;
+    font-size: 12em;
+    display: block;
+    transition: all .2s ease;
+    opacity: 1; }

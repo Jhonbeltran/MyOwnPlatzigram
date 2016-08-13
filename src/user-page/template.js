@@ -2,7 +2,7 @@
 'use strict'
 import yo from 'yo-yo'
 import layout from '../layout'
-import translate from '../translate'
+const translate = require('../translate').message
 
 export default function userPageTemplate(user){
 	let  el = yo`<div class="container user-page">
@@ -25,11 +25,22 @@ export default function userPageTemplate(user){
 			<div class="row">
 				${user.pictures.map(function(picture){
 					return yo`<div class="col s12 m6 l4">
-						<div class="picture-container">
+						<a href="/${user.username}/${picture.id}" class="picture-container">
 							<img src="${picture.src}" class="picture">
 							<div class="likes">
 								<i class="fa fa-heartbeat">${picture.likes}</i>
 							</div>
+						</a>
+						<div id="modal${picture.id}" class="modal modal-fixed-footer">
+						    <div class="modal-content">
+						      <img src="${picture.src}">
+						    </div>
+						    <div class="modal-footer">
+						      <div class="btn btn-flat likes white z-depth-0 ">
+						      	<i class="fa fa-heart"></i>
+						      	${translate('likes', {likes: picture.likes})}
+						      </div>
+						    </div>
 						</div>
 					</div>`
 				})}

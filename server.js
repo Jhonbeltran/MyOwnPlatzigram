@@ -121,6 +121,9 @@ app.get('/:username', function (req, res){
 	res.render('index', { title: `Platzigram - ${req.params.username}` })
 })
 
+app.get('/:username/:id', function (req, res){
+  res.render('index', { title: `Platzigram - ${req.params.username}` })
+})
 
 app.listen(port, function(err){
 	//Si hubo un error muestrelo en consola y termine la ejecucion
