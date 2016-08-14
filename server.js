@@ -5,6 +5,8 @@ const app = express()
 const port = process.env.PORT || 8080//definimos el puerto al que va a escuchar el servidor
 const ext = require('file-extension')
 const multer  = require('multer')
+
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './uploads')

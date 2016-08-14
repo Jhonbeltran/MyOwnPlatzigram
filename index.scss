@@ -237,10 +237,10 @@ $avatar-size-big: 150px;
   opacity: 0;
 
   &.likedMostrarCorazon{
-    color:$platzigram-red;
+    color: #fafafa;
     font-size: 12em;
     display: block;
     transition: all .2s ease;
-    opacity: 1;
+    opacity: 0.5;
   }
 }

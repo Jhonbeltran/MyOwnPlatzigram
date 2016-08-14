@@ -6433,8 +6433,8 @@ body {
   transition: all .1s ease;
   opacity: 0; }
   .like-heart.likedMostrarCorazon {
-    color: #f44336;
+    color: #fafafa;
     font-size: 12em;
     display: block;
     transition: all .2s ease;
-    opacity: 1; }
+    opacity: 0.5; }
